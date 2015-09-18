@@ -3,6 +3,7 @@ class ApplicationApi < Grape::API
   extend Napa::GrapeExtenders
 
   mount HelloApi => '/'
+  mount ContactsApi => '/contacts'
 
   add_swagger_documentation
 end
