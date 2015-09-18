@@ -58,4 +58,38 @@ describe ContactsApi do
       end
     end
   end
+
+  describe 'DELETE /contacts/:id' do
+    it 'deletes the contact' do
+      contact = create :contact
+      expect do
+        delete "/contacts/#{contact.id}"
+      end.to change(Contact, :count).by(-1)
+    end
+  end
+
+  describe 'PUT /contacts/:id' do
+    it 'updates the contact' do
+      contact = create :contact
+      put "/contacts/#{contact.id}", contact: { email: 'new@example.com' }
+      contact.reload
+      expect(contact.email).to eq 'new@example.com'
+    end
+  end
+
+  describe 'GET /contacts/:id' do
+    it 'shows the contact' do
+      contact = create :contact
+      get "/contacts/#{contact.id}"
+
+      expect(response_body).to eq({
+        "data"=>{
+          "object_type"=>"contact",
+          "id"=>contact.id.to_s,
+          "name"=>"Luke",
+          "phone"=>"4399897019",
+          "email"=>"luke123@example.com"}
+      }.to_json)
+    end
+  end
 end

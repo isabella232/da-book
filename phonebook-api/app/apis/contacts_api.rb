@@ -32,7 +32,7 @@ class ContactsApi < Grape::API
     end
     put do
       # fetch contact record and update attributes.  exceptions caught in app.rb
-      contact = Contact.find(params[:contact][:id])
+      contact = Contact.find(params[:id])
       contact.update_attributes!(params[:contact])
       represent contact, with: ContactRepresenter
     end
