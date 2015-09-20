@@ -33,7 +33,7 @@ function ContactDetailCtrl($http, AppSettings, $log, $stateParams) {
     });
 }
 
-function ContactEditCtrl($scope, $http, AppSettings, $log, $stateParams) {
+function ContactEditCtrl($scope, $http, AppSettings, $log, $stateParams, $state) {
 
   // ViewModel
   var vm = this;
@@ -47,11 +47,24 @@ function ContactEditCtrl($scope, $http, AppSettings, $log, $stateParams) {
     });
 
   $scope.updateContact = function() {
-    $log.log("Updating ");
+    var data = {
+      contact: {
+        name: vm.contact.name,
+        phone: vm.contact.phone,
+        email: vm.contact.email
+      }
+    };
+
+    $http.put(AppSettings.apiUrl + 'contacts/' + contactId, data).
+      then(function(response) {
+        $state.go('Home');
+      }, function(response) {
+        vm.errorMessage = response.data.error.message;
+      });
   };
 }
 
-function ContactNewCtrl($scope, $http, $log, AppSettings) {
+function ContactNewCtrl($scope, $http, $log, AppSettings, $state) {
 
   // ViewModel
   var vm = this;
@@ -63,16 +76,12 @@ function ContactNewCtrl($scope, $http, $log, AppSettings) {
 
   vm.title = 'New contact';
   $scope.addContact = function() {
-    $log.log("Submitting " + JSON.stringify(vm.contact));
     var data = { contact: vm.contact };
 
     $http.post(AppSettings.apiUrl + 'contacts', data).
       then(function(response) {
-        $log.log('Success');
-        $log.log(response);
+        $state.go('Home');
       }, function(response) {
-        $log.log('Error!!!');
-        $log.log(response);
         vm.errorMessage = response.data.error.message;
       });
   };
