@@ -76,9 +76,9 @@ function ContactNewCtrl($scope, $http, $log, AppSettings, $state) {
   // ViewModel
   var vm = this;
   vm.contact = {
-    name: 'João Borges',
-    email: 'jborges@medianeira.com',
-    phone: '4599899930'
+    name: '',
+    email: '',
+    phone: ''
   }
 
   vm.title = 'New contact';
