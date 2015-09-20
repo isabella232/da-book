@@ -1,0 +1,26 @@
+<div class="errors" ng-show="errorMessage">
+  <span>{{ errorMessage }}</span>
+</div>
+<div class="input string contact_name">
+  <label for="contact_name">
+    Contact name
+  </label>
+  <input class="string optional" type="text" name="contact[name]"
+id="contact_name" ng-model="contactObject.name">
+</div>
+
+<div class="input string">
+  <label for="contact_phone">
+    Phone Number
+  </label>
+  <input class="string optional" type="text" name="contact[phone]"
+  id="contact_phone" ng-model="contactObject.phone">
+</div>
+
+<div class="input string contact_email">
+  <label for="contact_email">
+    Email
+  </label>
+  <input class="string optional" type="text" email="contact[email]"
+ id="contact_email" ng-model="contactObject.email">
+</div>

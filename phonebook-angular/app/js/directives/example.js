@@ -5,17 +5,19 @@ var directivesModule = require('./_index.js');
 /**
  * @ngInject
  */
-function exampleDirective() {
+function contactForm() {
 
   return {
-    restrict: 'EA',
-    link: function(scope, element) {
-      element.on('click', function() {
-        console.log('element clicked');
-      });
+    restrict: 'EAM',
+    templateUrl: function() {
+      return 'partials/_form.html';
+    },
+    scope: {
+      contactObject: "=",
+      errorMessage: "="
     }
   };
 
 }
 
-directivesModule.directive('exampleDirective', exampleDirective);
+directivesModule.directive('contactForm', contactForm);

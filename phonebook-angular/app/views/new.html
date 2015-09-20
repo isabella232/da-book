@@ -1,0 +1,8 @@
+<h2>Create a new Contact</h2>
+
+<a ui-sref="Home">List contacts</a>
+
+<form ng-submit="addContact()">
+  <contact-form contact-object="new.contact" error-message="new.errorMessage"></contact-form>
+  <input type="submit" value="Update Contact"/>
+</form>
