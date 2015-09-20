@@ -5,5 +5,9 @@
 <ul>
   <li ng-repeat="contact in home.contacts | orderBy: 'name'">
     <a ui-sref="Detail({contactId: contact.id})">{{ contact.name }}</a>
+    -
+    <a ui-sref="Edit({contactId: contact.id})">Edit</a>
+    -
+    <a href="#" ng-click="deleteContact(contact.id)">Delete</a>
   </li>
 </ul>

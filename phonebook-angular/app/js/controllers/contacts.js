@@ -5,7 +5,7 @@ var controllersModule = require('./_index');
 /**
  * @ngInject
  */
-function ContactsCtrl($http, AppSettings, $log) {
+function ContactsCtrl($http, AppSettings, $log, $scope, $filter) {
 
   // ViewModel
   var vm = this;
@@ -17,6 +17,13 @@ function ContactsCtrl($http, AppSettings, $log) {
     then(function(response) {
       vm.contacts = response.data.data;
     });
+
+  $scope.deleteContact = function(contactId) {
+    $http.delete(AppSettings.apiUrl + 'contacts/' + contactId).
+      then(function(response) {
+        vm.contacts = $filter('filter')(vm.contacts, { id: '!' + contactId });
+      });
+  };
 }
 
 function ContactDetailCtrl($http, AppSettings, $log, $stateParams) {
