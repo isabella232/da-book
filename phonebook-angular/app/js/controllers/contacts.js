@@ -20,7 +20,7 @@ function ContactsCtrl($http, AppSettings, $log, $scope, $filter) {
 
   $scope.deleteContact = function(contactId) {
     $http.delete(AppSettings.apiUrl + 'contacts/' + contactId).
-      then(function(response) {
+      then(function() {
         vm.contacts = $filter('filter')(vm.contacts, { id: '!' + contactId });
       });
   };
@@ -63,7 +63,7 @@ function ContactEditCtrl($scope, $http, AppSettings, $log, $stateParams, $state)
     };
 
     $http.put(AppSettings.apiUrl + 'contacts/' + contactId, data).
-      then(function(response) {
+      then(function() {
         $state.go('Home');
       }, function(response) {
         vm.errorMessage = response.data.error.message;
@@ -86,7 +86,7 @@ function ContactNewCtrl($scope, $http, $log, AppSettings, $state) {
     var data = { contact: vm.contact };
 
     $http.post(AppSettings.apiUrl + 'contacts', data).
-      then(function(response) {
+      then(function() {
         $state.go('Home');
       }, function(response) {
         vm.errorMessage = response.data.error.message;
