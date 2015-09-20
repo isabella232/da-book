@@ -32,8 +32,6 @@ function ContactDetailCtrl($http, AppSettings, $log, $stateParams) {
   var vm = this;
   var contactId = $stateParams.contactId;
 
-  vm.title = 'Show contact';
-
   $http.get(AppSettings.apiUrl + 'contacts/' + contactId).
     then(function(response) {
       vm.contact = response.data.data;
@@ -45,8 +43,6 @@ function ContactEditCtrl($scope, $http, AppSettings, $log, $stateParams, $state)
   // ViewModel
   var vm = this;
   var contactId = $stateParams.contactId;
-
-  vm.title = 'Edit contact';
 
   $http.get(AppSettings.apiUrl + 'contacts/' + contactId).
     then(function(response) {
@@ -81,7 +77,6 @@ function ContactNewCtrl($scope, $http, $log, AppSettings, $state) {
     phone: ''
   }
 
-  vm.title = 'New contact';
   $scope.addContact = function() {
     var data = { contact: vm.contact };
 
