@@ -19,10 +19,12 @@ function ContactsCtrl($http, AppSettings, $log, $scope, $filter) {
     });
 
   $scope.deleteContact = function(contactId) {
-    $http.delete(AppSettings.apiUrl + 'contacts/' + contactId).
-      then(function() {
-        vm.contacts = $filter('filter')(vm.contacts, { id: '!' + contactId });
-      });
+    if (confirm('Are you sure?')) {
+      $http.delete(AppSettings.apiUrl + 'contacts/' + contactId).
+        then(function() {
+          vm.contacts = $filter('filter')(vm.contacts, { id: '!' + contactId });
+        });
+    }
   };
 }
 
