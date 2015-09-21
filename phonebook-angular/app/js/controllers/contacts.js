@@ -52,9 +52,9 @@ function ContactEditCtrl($scope, $http, AppSettings, $log, $stateParams, $state)
   $scope.updateContact = function() {
     var data = {
       contact: {
-        name: vm.contact.name,
-        phone: vm.contact.phone,
-        email: vm.contact.email
+        name: vm.contact.name || '',
+        phone: vm.contact.phone || '',
+        email: vm.contact.email || ''
       }
     };
 
