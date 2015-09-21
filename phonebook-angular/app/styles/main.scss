@@ -18,8 +18,7 @@ body {
   }
 }
 
-.edit-button {
-  @include button;
+@mixin action-button {
   font-weight: normal;
   margin: 4px 10px;
   padding: 2px 5px;
@@ -28,14 +27,14 @@ body {
   }
 }
 
+.edit-button {
+  @include button;
+  @include action-button
+}
+
 .remove-button {
   @include button(simple, #ff0000);
-  font-weight: normal;
-  margin: 5px;
-  padding: 2px 5px;
-  &:hover {
-    color: $font-color--light;
-  }
+  @include action-button
 }
 
 .contacts-list {
