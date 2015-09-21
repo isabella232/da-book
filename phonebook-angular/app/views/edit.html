@@ -1,11 +1,5 @@
-<h1>Editing </h1>
-<a ui-sref="Home">List contacts</a>
-
 <h2>Edit the contact</h2>
 
-<fieldset>
-  <form ng-submit="updateContact()">
-    <contact-form contact-object="edit.contact" error-message="edit.errorMessage"></contact-form>
-    <input type="submit" value="Update Contact"/>
-  </form>
-</fieldset>
+<a ui-sref="Home">List contacts</a>
+
+<contact-form contact-object="edit.contact" error-message="edit.errorMessage" submit-value="Update Contact" submit-function="updateContact()" ></contact-form>
