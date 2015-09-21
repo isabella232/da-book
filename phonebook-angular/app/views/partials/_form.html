@@ -8,24 +8,34 @@
       <label for="contact_name">
         Contact name
       </label>
-      <input required class="string" type="text" name="contact[name]" id="contact_name" ng-model="contactObject.name">
+      <input required class="string" type="text" name="name" id="contact_name" ng-model="contactObject.name">
+      <div class="error-message" ng-show="contactForm.$submitted || contactForm.name.$touched">
+        <div ng-show="contactForm.name.$error.required">Name can't be blank.</div>
+      </div>
     </div>
 
     <div class="input string">
       <label for="contact_phone">
         Phone Number
       </label>
-      <input required class="string" type="text" name="contact[phone]" id="contact_phone" ng-model="contactObject.phone">
+      <input required class="string" type="text" name="phone" id="contact_phone" ng-model="contactObject.phone">
+      <div class="error-message" ng-show="contactForm.$submitted || contactForm.phone.$touched">
+        <div ng-show="contactForm.phone.$error.required">Phone can't be blank.</div>
+      </div>
     </div>
 
     <div class="input string contact_email">
       <label for="contact_email">
         Email
       </label>
-      <input required class="string" type="email" name="contact[email]" id="contact_email" ng-model="contactObject.email">
+      <input required class="string" type="email" name="email" id="contact_email" ng-model="contactObject.email">
+      <div class="error-message" ng-show="contactForm.$submitted || contactForm.email.$touched">
+        <div ng-show="contactForm.email.$error.required">Email can't be blank.</div>
+        <div ng-show="contactForm.email.$error.email">Email not on the right format.</div>
+      </div>
     </div>
 
-    <input type="submit" value="{{ submitValue }}"/>
+    <input type="submit" ng-disabled="contactForm.$invalid" value="{{ submitValue }}"/>
 
   </form>
 </fieldset>
