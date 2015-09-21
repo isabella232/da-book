@@ -31,7 +31,7 @@
       <input required class="string" type="email" name="email" id="contact_email" ng-model="contactObject.email">
       <div class="error-message" ng-show="contactForm.$submitted || contactForm.email.$touched">
         <div ng-show="contactForm.email.$error.required">Email can't be blank.</div>
-        <div ng-show="contactForm.email.$error.email">Email not on the right format.</div>
+        <div ng-show="contactForm.email.$error.email">Email needs a valid format.</div>
       </div>
     </div>
 

@@ -10,3 +10,34 @@ body {
   background-color: $background--light;
   padding: $half-space;
 }
+
+.button {
+  @include button;
+  &:hover {
+    color: $font-color--light;
+  }
+}
+
+.edit-button {
+  @include button;
+  font-weight: normal;
+  margin: 4px 10px;
+  padding: 2px 5px;
+  &:hover {
+    color: $font-color--light;
+  }
+}
+
+.remove-button {
+  @include button(simple, #ff0000);
+  font-weight: normal;
+  margin: 5px;
+  padding: 2px 5px;
+  &:hover {
+    color: $font-color--light;
+  }
+}
+
+.contacts-list {
+  padding: 25px 0;
+}
