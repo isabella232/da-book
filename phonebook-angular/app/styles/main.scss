@@ -1,0 +1,42 @@
+@import 'vars';
+@import 'typography';
+@import 'bourbon/bourbon';
+@import 'neat/neat';
+@import 'base/base';
+
+body {
+  font-family: Helvetica, sans-serif;
+  color: $font-color--dark;
+  background-color: $background--light;
+  padding: $half-space;
+}
+
+.button {
+  @include button;
+  &:hover {
+    color: $font-color--light;
+  }
+}
+
+@mixin action-button {
+  font-weight: normal;
+  margin: 4px 10px;
+  padding: 2px 5px;
+  &:hover {
+    color: $font-color--light;
+  }
+}
+
+.edit-button {
+  @include button;
+  @include action-button
+}
+
+.remove-button {
+  @include button(simple, #ff0000);
+  @include action-button
+}
+
+.contacts-list {
+  padding: 25px 0;
+}

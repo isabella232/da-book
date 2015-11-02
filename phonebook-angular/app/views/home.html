@@ -1,0 +1,11 @@
+<h1 class="heading -large">{{ home.title }}</h1>
+
+<ul class="contacts-list">
+  <li ng-repeat="contact in home.contacts | orderBy: 'name'">
+    <a ui-sref="Detail({contactId: contact.id})">{{ contact.name }}</a>
+    <a class="edit-button" ui-sref="Edit({contactId: contact.id})">Edit</a>
+    <a class="remove-button" href="#" ng-click="deleteContact(contact.id)">Delete</a>
+  </li>
+</ul>
+
+<a ui-sref="New" class="button">Add a new contact</a>
